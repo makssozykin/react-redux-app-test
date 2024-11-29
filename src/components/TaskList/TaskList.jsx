@@ -18,7 +18,7 @@ const getVisibleTasks = (tasks, statusFilter) => {
 export const TaskList = () => {
   // 2. Отримуємо масив завдань із стану Redux
   const tasks = useSelector((state) => state.tasks.items);
-  console.log(tasks);
+
   // 3. Отримуємо значення фільтра із стану Redux
   const statusFilter = useSelector((state) => state.filters.status);
   // 4. Обчислюємо масив завдань, які необхідно відображати в інтерфейсі
