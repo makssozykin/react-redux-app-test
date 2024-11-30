@@ -1,6 +1,7 @@
+import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { MdClose } from "react-icons/md";
-import { deleteTask, toggleCompleted } from "../../redux/tasksSlice";
+import { deleteTask, toggleCompleted } from "../../redux/operation";
 import css from "./Task.module.css";
 
 export const Task = ({ task }) => {
@@ -8,7 +9,7 @@ export const Task = ({ task }) => {
 
   const handleDelete = () => dispatch(deleteTask(task.id));
 
-  const handleToggle = () => dispatch(toggleCompleted(task.id));
+  const handleToggle = () => dispatch(toggleCompleted(task));
 
   return (
     <div className={css.wrapper}>
@@ -24,4 +25,12 @@ export const Task = ({ task }) => {
       </button>
     </div>
   );
+};
+
+Task.propTypes = {
+  task: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+    completed: PropTypes.bool.isRequired,
+  }),
 };

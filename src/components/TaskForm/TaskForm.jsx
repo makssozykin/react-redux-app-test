@@ -1,7 +1,7 @@
 // 1. Імпортуємо хук для відправки екшену в Redux щодо зміни події
 import { useDispatch } from "react-redux";
 // 2. Імпортуємо фабрику екшену
-import { addTask } from "../../redux/tasksSlice";
+import { addTask } from "../../redux/operation";
 import { Button } from "../Button/Button";
 import css from "./TaskForm.module.css";
 
@@ -15,11 +15,12 @@ export const TaskForm = () => {
     // 4. Викликаємо фабрику екшену та передаємо дані для payload
     // 5. Відправляємо результат – екшен створення завдання
     dispatch(
-      addTask({
-        id: crypto.randomUUID(),
-        completed: false,
-        text: form.elements.text.value,
-      })
+      // addTask({
+      //   id: crypto.randomUUID(),
+      //   completed: false,
+      //   text: form.elements.text.value,
+      // })
+      addTask(event.target.elements.text.value)
     );
     form.reset();
   };
